@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>StarNotary DAPP</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  </head>
+  <style>
+    input {
+      display: block;
+      margin-bottom: 12px;
+    }
+  </style>
+  <body>
+    <h1>Document Verification — Dapp</h1>
+    <hr>
+    <h2>Upload Document Details</h2>
+
+    <label for="authorName">Author Name:</label> <input type="text" id="authorName"></input>
+
+    <label for="researchTitle">Research Title:</label><input type="text" id="researchTitle"></input>
+
+    <label for="email">Email:</label><input type="text" id="email"></input>
+
+    <button onclick="App.signDetails()">Sign Document Details</button>
+
+    <hr>
+
+    <label for="hashedMessage">The hashed message:</label><input type="text" id="hashedMessage"></input>
+
+    <label for="signature">Digital signature generated:</label><input type="text" id="signature"></input>
+
+
+    <button onclick="App.verifySig()">Verify Signature</button>
+
+    <br>
+    <br>
+
+    <span id="signer"></span>
+
+    <script src="index.js"></script>
+
+  </body>
+</html>
