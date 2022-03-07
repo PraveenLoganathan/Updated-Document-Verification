@@ -17,16 +17,19 @@ Versions:
 Instructions on how to migrate the contract and import test accounts from Truffle can be found below.
 
 ### Enter Document Details
-![Enter Details](images/EnterDetails.png)
+![Enter Details](images/EnterDetails.PNG)
 
 ### Hash and Sign Document Details
-![Sign Message](images/SignMessage.png)
+![Sign Message](images/SignMessage.PNG)
 
 ### Hashed Details Output
-![Hashed Details](images/HashedDetails.png)
+![Hashed Details](images/HashedDetails.PNG)
 
 ### Verify Signature
-![Verify Signature](images/VerifySig.png)
+![Verify Signature](images/VerifySig.PNG)
+
+### Signer Address Console output
+![Verify Signature](images/SignerAddress.PNG)
 
 ## Getting Started
 
