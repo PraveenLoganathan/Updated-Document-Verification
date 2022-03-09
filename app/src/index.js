@@ -36,7 +36,7 @@ const App = {
 
   // signDetails is used to hash message input parameters
   // The hashed message is signed using Metamask
-  // The hashed message and signature is displayed in their respective fields
+  // The hashed message and signature are displayed in their respective fields
 
   signDetails: async function() {
 
@@ -54,25 +54,26 @@ const App = {
     });
     console.log({ signature });
 
-    // The below smart contract data entry function requires testing
+    // The below function registers the data in the smart contract.
 
-    //const { addNewDoc } = this.meta.methods;
+    const { addNewDoc } = this.meta.methods;
 
-    //await addNewDoc(signature, hashedMessage, authorName, researchTitle, email).send({from: this.account});
+    await addNewDoc(signature, hashedMessage, authorName, researchTitle, email).send({from: this.account});
 
     document.getElementById('hashedMessage').value = hashedMessage;
     document.getElementById('signature').value = signature;
   },
 
+
   // The DApp retrieves hashed message and signature from their respective fields
   // This function will be enchanced in the future to read hashed message and signature from the smart contract
 
-  // verifyMessage breaks down the signature into v,r and s (this takes place off-chain)
+  // verifySig breaks down the signature into v,r and s (this takes place off-chain)
   // DApp calls smart contract's verifyMessage function upon which (the verification takes place on-chain)
 
   // Metamask prompts user to confirm the transaction
 
-  verifySigﬁ: async function() {
+  verifySig: async function() {
 
     const hashedMessage = document.getElementById('hashedMessage').value;
     const signature = document.getElementById('signature').value;
@@ -85,11 +86,20 @@ const App = {
     const v = parseInt(signature.slice(130, 132), 16);
     console.log({ r, s, v });
 
-    //smart contract is supplied with signature parameters and the output is a JSON that contains the signer address ("from:")
+  // smart contract is supplied with signature parameters and the output is a JSON that contains the signer address ("from:")
     const { VerifyMessage } = this.meta.methods;
     const response = await VerifyMessage(hashedMessage,v,r,s).send({from: this.account});
     console.log(response);
 
+  },
+
+  // getDocumentDetailsFromHash uses the hashed message to pull the document details from the smart contract and the output is a JSON
+
+  getDocumentDetailsFromHash: async function() {
+    const hashedMessage = document.getElementById('hashedMessage').value;
+    const { getDocDetailsFromHash } = this.meta.methods;
+    const details = await getDocDetailsFromHash(hashedMessage).call();
+    console.log(details);
   }
 
 };

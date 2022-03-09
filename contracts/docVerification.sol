@@ -6,7 +6,7 @@ contract DocVerification {
   // Logbook for hosted documents
 
   struct DocumentData {
-    bytes32 sign;
+    string sign;
     bytes32 recordHash;
     string authorName;
     string title;
@@ -24,7 +24,7 @@ contract DocVerification {
 
   event _NewDocAdd(bytes32 indexed recordHash, string authorName, string title, string email, uint256 timestamp, bool isDocExists);
 
-  function addNewDoc(bytes32 _sign, bytes32 _recordHash, string memory _authorName, string memory _title, string memory _email) public {
+  function addNewDoc(string memory _sign, bytes32 _recordHash, string memory _authorName, string memory _title, string memory _email) public {
 
     documentdata[_recordHash].recordHash = _recordHash;
     documentdata[_recordHash].sign = _sign;
